@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Works</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/core.css">
+    <link rel="stylesheet" href="../css/Homework.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <div class="container">
+            <div class="inner_header">
+                <a href="../index.html">
+                    <div class="logotype">
+                        <h2>Java<span>Script</span></h2>
+                    </div>
+                </a>
+                <ul class="menu">
+                    <li class="menu_link">
+                        <a href="../pages/Homework.html">Home Works</a>
+                    </li>
+                    <li class="menu_link">
+                        <a href="../pages/lessons.html">Lessons</a>
+                    </li>
+                    <li class="menu_link">
+                        <a href="https://t.me/NurDinBuy16" target="_blank">Send hw</a>
+                    </li>
+                </ul>
+                <button class="btn" id="btn-get">Click me!</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="gmail_block">
+        <div class="container">
+            <h3>Homework 1 (part 1)</h3>
+            <div class="inner_gmail_block">
+                <div class="form_gmail">
+                    <label for="gmail_input"></label>
+                    <input type="text" id="gmail_input" placeholder="your gmail">
+                    <button class="btn" id="gmail_button">Check gmail</button>
+                    <span class="checker" id="gmail_result"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="move_block">
+        <div class="container">
+            <h3>Homework 1 (part 2)</h3>
+            <div class="inner_move_block">
+                <div class="parent_block">
+                    <div class="child_block"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stopwatch">
+        <div class="container">
+            <h3>Homework 2 </h3>
+            <div class="time">
+                <div class="time_block">
+                    <div class="interval" id="minutesS">00</div>
+                    <div class="break">:</div>
+                    <div class="interval" id="secondsS">00</div>
+                    <div class="break">:</div>
+                    <div class="interval" id="ml-secondsS">00</div>
+                </div>
+            </div>
+            <div class="time_buttons">
+                <button class="btn" id="start" onclick="startStopwatch()">Start</button>
+                <button class="btn" id="stop" onclick="stopStopwatch()">Stop</button>
+                <button class="btn" id="reset" onclick="resetStopwatch()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <a href="#" target="_blank">
+                <div class="inner_footer">
+                    <h2>Made by Inai</h2>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="modal">
+    <div class="modal_dialog">
+        <div class="modal_content">
+            <form action="#">
+                <div class="modal_close">&times;</div>
+                <div class="modal_title">Мы свяжемся с вами как можно быстрее!</div>
+                <input required placeholder="Ваше имя" name="name" type="text" class="modal_input">
+                <input required placeholder="Ваш номер телефона" name="phone" type="phone" class="modal_input">
+                <button class="btn btn_dark btn_min">Перезвонить мне</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let timer;
+    let minutes = 0;
+    let seconds = 0;
+    let milliseconds = 0;
+
+    function startStopwatch() {
+        timer = setInterval(updateStopwatch, 10);
+    }
+
+    function stopStopwatch() {
+        clearInterval(timer);
+    }
+
+    function resetStopwatch() {
+        clearInterval(timer);
+        minutes = 0;
+        seconds = 0;
+        milliseconds = 0;
+        updateDisplay();
+    }
+
+    function updateStopwatch() {
+        milliseconds += 10;
+        if (milliseconds === 1000) {
+            milliseconds = 0;
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+            }
+        }
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        document.getElementById('minutesS').innerText = padNumber(minutes);
+        document.getElementById('secondsS').innerText = padNumber(seconds);
+        document.getElementById('ml-secondsS').innerText = padNumber(milliseconds);
+    }
+
+    function padNumber(num) {
+        return num.toString().padStart(2, '0');
+    }
+</script>
+<script src="../js/Homework.js"></script>
+</body>
+</html>
